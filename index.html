@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Garden Full of Love 💙💛</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+    background: #071c36;
+    color: white;
+}
+
+/* BACKGROUND */
+.scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 30%, #ffe9a3 0%, transparent 28%),
+      linear-gradient(180deg, #78b8e8 0%, #b9e0ed 45%,
+      #f8d88c 75%, #315b48 100%);
+}
+
+.sun {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #fff3b0;
+    box-shadow: 0 0 60px 25px #ffe7a1;
+    top: 13%;
+    right: 16%;
+    animation: sunshine 4s infinite alternate;
+}
+
+@keyframes sunshine {
+    from { box-shadow: 0 0 40px 15px #ffe7a1; }
+    to { box-shadow: 0 0 85px 35px #ffe7a1; }
+}
+
+/* HILLS */
+.hill {
+    position: absolute;
+    bottom: -100px;
+    width: 120%;
+    height: 260px;
+    left: -10%;
+    border-radius: 50% 50% 0 0;
+    background: linear-gradient(#477c53, #173f32);
+}
+
+.hill.two {
+    bottom: -150px;
+    left: 25%;
+    background: linear-gradient(#66945c, #183b30);
+}
+
+/* MAIN CONTENT */
+.content {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 65px);
+    color: #fffdf0;
+    text-shadow: 0 3px 15px #365b65;
+    margin-bottom: 15px;
+    animation: fadeIn 2s ease;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #fffbea;
+    text-shadow: 0 2px 8px #345;
+    margin-bottom: 35px;
+}
+
+button {
+    border: 1px solid rgba(255,255,255,.7);
+    background: linear-gradient(135deg, #fff1a8, #f4c95c);
+    color: #344b57;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 5px 20px #294b5a66;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #fff2ac;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* FLOWERS */
+.garden {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.flower {
+    position: absolute;
+    bottom: -15px;
+    width: 55px;
+    height: 220px;
+    transform-origin: bottom center;
+    animation: sway 4s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+.stem {
+    position: absolute;
+    width: 5px;
+    height: 145px;
+    bottom: 0;
+    left: 25px;
+    background: linear-gradient(90deg, #174d32, #7eae58);
+    border-radius: 10px;
+}
+
+.leaf {
+    position: absolute;
+    width: 28px;
+    height: 13px;
+    background: #4e9856;
+    border-radius: 100% 0 100% 0;
+    bottom: 65px;
+    left: 27px;
+    transform: rotate(-25deg);
+}
+
+.leaf.right {
+    left: 0;
+    bottom: 95px;
+    transform: rotate(30deg) scaleX(-1);
+}
+
+.bloom {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translateX(-50%) scale(0);
+    animation: bloom 2.5s ease-out forwards;
+}
+
+@keyframes bloom {
+    0% { transform: translateX(-50%) scale(0) rotate(-30deg); }
+    70% { transform: translateX(-50%) scale(1.2) rotate(10deg); }
+    100% { transform: translateX(-50%) scale(1) rotate(0); }
+}
+
+.petal {
+    position: absolute;
+    width: 23px;
+    height: 29px;
+    border-radius: 50% 50% 45% 45%;
+    left: 18px;
+    top: 0;
+    transform-origin: 50% 30px;
+}
+
+.blue .petal {
+    background: linear-gradient(#a7dcff, #3288d5);
+    box-shadow: 0 0 8px #b5e4ff;
+}
+
+.yellow .petal {
+    background: linear-gradient(#fff5a2, #ffc928);
+    box-shadow: 0 0 9px #ffe98a;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(60deg); }
+.petal:nth-child(3) { transform: rotate(120deg); }
+.petal:nth-child(4) { transform: rotate(180deg); }
+.petal:nth-child(5) { transform: rotate(240deg); }
+.petal:nth-child(6) { transform: rotate(300deg); }
+
+.center {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #8b581f;
+    left: 21px;
+    top: 21px;
+    z-index: 2;
+    box-shadow: 0 0 8px #fff3a3;
+}
+
+/* BUTTERFLIES */
+.butterfly {
+    position: absolute;
+    font-size: 28px;
+    z-index: 5;
+    animation: fly 12s linear infinite;
+}
+
+@keyframes fly {
+    0% { transform: translate(-10vw, 75vh) rotate(0); }
+    25% { transform: translate(25vw, 40vh) rotate(20deg); }
+    50% { transform: translate(55vw, 55vh) rotate(-15deg); }
+    75% { transform: translate(80vw, 20vh) rotate(15deg); }
+    100% { transform: translate(110vw, 65vh) rotate(0); }
+}
+
+/* FLOATING PETALS */
+.floating {
+    position: absolute;
+    top: -30px;
+    font-size: 20px;
+    animation: falling linear infinite;
+    opacity: .8;
+}
+
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* LYRICS */
+.lyrics {
+    min-height: 75px;
+    max-width: 700px;
+    font-size: clamp(19px, 3vw, 27px);
+    color: #fff9d8;
+    text-shadow: 0 2px 12px #304b57;
+    line-height: 1.6;
+    margin: 15px 0;
+    transition: opacity .5s;
+}
+
+.love-note {
+    font-size: 16px;
+    color: white;
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px #315;
+}
+
+.music-controls {
+    margin-top: 15px;
+}
+
+.music-info {
+    font-size: 13px;
+    margin-top: 12px;
+    color: #fff8d8;
+}
+
+/* ENDING */
+.ending {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background: linear-gradient(145deg, #092c54, #315b77, #e6b85c);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    animation: fadeIn 2s;
+}
+
+.ending h2 {
+    font-size: clamp(32px, 6vw, 55px);
+    color: #ffe9a0;
+    margin-bottom: 25px;
+}
+
+.ending p {
+    line-height: 2;
+    font-size: 18px;
+    max-width: 650px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:600px) {
+    .flower {
+        transform: scale(.8);
+        transform-origin: bottom center;
+    }
+    .subtitle { font-size: 15px; }
+}
+
+
+.love-title {
+    text-align: center;
+    margin-bottom: 22px;
+    animation: romanticAppear 2s ease forwards;
+}
+
+.tiny-heart {
+    color: #ffdb82;
+    font-size: 25px;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 8px;
+}
+
+.love-title h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 9vw, 88px);
+    letter-spacing: 8px;
+    font-weight: normal;
+    color: #fff7d9;
+    text-shadow:
+        0 0 10px #fff2b5,
+        0 0 25px #f7d36f,
+        0 0 50px #e8ad43;
+    animation: titleGlow 3s infinite alternate;
+}
+
+.gold-line {
+    width: 170px;
+    height: 2px;
+    margin: 12px auto 15px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffe69a,
+        white,
+        #ffe69a,
+        transparent
+    );
+    box-shadow: 0 0 12px #ffe69a;
+}
+
+.name {
+    font-family: Georgia, serif;
+    font-size: clamp(25px, 5vw, 42px);
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: 5px;
+    color: #a9ddff;
+    text-shadow: 0 0 18px #5ab9ff;
+    animation: nameGlow 3s infinite alternate;
+}
+
+.love-caption {
+    margin-top: 14px;
+    font-size: 16px;
+    font-style: italic;
+    color: #fff5d6;
+    letter-spacing: 1px;
+}
+
+.forever {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #ffe49a;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 10px #fff2b5;
+    }
+    to {
+        text-shadow:
+            0 0 20px #fff,
+            0 0 45px #ffd66e,
+            0 0 70px #f2b74f;
+    }
+}
+
+@keyframes nameGlow {
+    from { text-shadow: 0 0 8px #69baff; }
+    to { text-shadow: 0 0 28px #69c5ff; }
+}
+
+@keyframes romanticAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+    <div class="sun"></div>
+    <div class="hill"></div>
+    <div class="hill two"></div>
+</div>
+
+<div class="garden" id="garden"></div>
+
+<div class="butterfly" style="top:10%; animation-delay:-2s">🦋</div>
+<div class="butterfly" style="top:35%; animation-delay:-7s">🦋</div>
+<div class="butterfly" style="top:60%; animation-delay:-4s">🦋</div>
+
+<div id="petals"></div>
+
+<!-- OPENING -->
+<section class="content" id="opening">
+    <h1>For Someone Special 💙</h1>
+    <p class="subtitle">
+        Ada sebuah taman kecil yang ingin aku tunjukkan kepadamu...
+    </p>
+    <button onclick="startGarden()">
+        Buka Pesan Spesial 🌷
+    </button>
+</section>
+
+<!-- MAIN GARDEN -->
+
+<section class="content hidden" id="main">
+
+    <div class="love-title">
+        <div class="tiny-heart">♥</div>
+
+        <h1>I LOVE YOU</h1>
+
+        <div class="gold-line"></div>
+
+        <h2 class="name">Gracella Audrey</h2>
+
+        <p class="love-caption">
+            You're my favorite beautiful story WUPP. 💙
+        </p>
+
+        <p class="forever">
+            ✦ FOREVER IN MY HEART ✦
+        </p>
+    </div>
+
+    <div class="love-note" id="loveNote">
+        Di antara luasnya dunia, ada seseorang
+        yang membuat hari-hari sederhana terasa istimewa.
+    </div>
+
+    <div class="lyrics" id="lyrics">
+        Kamu adalah warna di taman kehidupanku...
+    </div>
+
+    <div class="music-controls">
+        <button onclick="toggleMusic()" id="musicButton">
+            ▶ Putar Musik
+        </button>
+
+        <button onclick="showEnding()">
+            Pesan Terakhir 💌
+        </button>
+    </div>
+
+    <p class="music-info" id="musicStatus"></p>
+
+    <audio id="music" preload="metadata">
+        <source src="lagu%20(3).mp3" type="audio/mpeg">
+    </audio>
+
+</section>
+
+
+<!-- ENDING -->
+<section class="ending hidden" id="ending">
+    <h2>Untukmu, Dari Hati 💛</h2>
+
+    <p>
+        Jika suatu hari bunga-bunga di taman ini kembali layu, 
+        "walau cuman digambar sihh",
+        tapi, semoga kenangan indah yang kita punya tetap tumbuh.
+        <br><br>
+        Jika langit kehilangan warnanya,
+        semoga kehadiranmu selalu menjadi cahaya.
+        <br><br>
+        Terima kasih sudah menjadi bagian
+        dari cerita indah yang ingin selalu dikenang.
+        <br><br>
+        <strong>
+        Kamu adalah saSSlah satu hal terindah
+        yang pernah hadir dalam cerita ini. 💙
+        </strong>
+    </p>
+
+    <br>
+    <button onclick="backToGarden()">Kembali ke Taman 🌼</button>
+</section>
+
+<script>
+const garden = document.getElementById("garden");
+const petals = document.getElementById("petals");
+const music = document.getElementById("music");
+
+let playing = false;
+let started = false;
+let flowerTimers = [];
+
+const flowerCount = 28;
+
+// CREATE FLOWERS
+function createFlowers() {
+    for (let i = 0; i < flowerCount; i++) {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+
+        const color = i % 2 === 0 ? "blue" : "yellow";
+        const left = (i / (flowerCount - 1)) * 100;
+        const height = 140 + Math.random() * 110;
+
+        flower.style.left = left + "%";
+        flower.style.height = height + "px";
+        flower.style.animationDelay = Math.random() * 3 + "s";
+
+        flower.innerHTML = `
+            <div class="stem"></div>
+            <div class="leaf"></div>
+            <div class="leaf right"></div>
+            <div class="bloom ${color}">
+                <span class="petal"></span>
+                <span class="petal"></span>
+                <span class="petal"></span>
+                <span class="petal"></span>
+                <span class="petal"></span>
+                <span class="petal"></span>
+                <span class="center"></span>
+            </div>
+        `;
+
+        flower.querySelector(".bloom").style.animationDelay =
+            (i * 0.13) + "s";
+
+        garden.appendChild(flower);
+    }
+}
+
+// FLOATING PETALS
+function createPetals() {
+    for (let i = 0; i < 22; i++) {
+        const p = document.createElement("div");
+        p.className = "floating";
+        p.innerHTML = i % 2 ? "🌼" : "🌸";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.animationDuration = (8 + Math.random() * 12) + "s";
+        p.style.animationDelay = (-Math.random() * 15) + "s";
+        petals.appendChild(p);
+    }
+}
+
+createFlowers();
+createPetals();
+
+// START
+function startGarden() {
+    document.getElementById("opening").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+
+    started = true;
+    toggleMusic();
+}
+
+// MUSIC
+async function toggleMusic() {
+    const statusEl = document.getElementById("musicStatus");
+    if (!playing) {
+        try {
+            await music.play();
+            playing = true;
+            document.getElementById("musicButton").innerHTML =
+                "⏸ Jeda Musik";
+            if (statusEl) {
+                statusEl.innerHTML =
+                    "Sedang memutar All Falls Down 💙";
+            }
+        } catch (error) {
+            if (statusEl) {
+                statusEl.innerHTML =
+                    "File musik belum ditemukan. Pastikan file lagu (3).mp3 ada di folder yang sama dengan HTML.";
+            }
+        }
+    } else {
+        music.pause();
+        playing = false;
+        document.getElementById("musicButton").innerHTML =
+            "▶ Lanjutkan Musik";
+    }
+}
+
+// ORIGINAL ROMANTIC LYRICS
+// Waktu dalam detik, sesuaikan dengan bagian lagu.
+const lyricsData = [
+    { time: 0, text: "Di antara jutaan bintang, ada satu cahaya yang selalu ingin aku lihat. ✨" },
+    { time: 12, text: "Seperti bunga biru yang tumbuh, rasa ini hadir dengan cara yang sederhana. 💙" },
+    { time: 25, text: "Dan seperti matahari kuning, kamu membawa hangat di setiap hariku. 💛" },
+    { time: 40, text: "Tak harus selalu sempurna, cukup saling menghargai dan menjaga. 🌷" },
+    { time: 55, text: "Jika dunia berubah, semoga kenangan indah tetap tinggal. 🦋" },
+    { time: 70, text: "Aku ingin setiap cerita sederhana menjadi kenangan yang berharga." },
+    { time: 85, text: "Kamu adalah warna indah dalam taman kecil bernama kehidupan. 🌼" },
+    { time: 100, text: "Dan semoga bunga-bunga ini selalu mengingatkanmu pada pesan ini. 💙" },
+    { time: 115, text: "Terima kasih telah menjadi bagian dari cerita yang indah. 💛" },
+    { time: 130, text: "Satu taman, dua warna, dan sejuta alasan untuk tersenyum. 🌸" }
+];
+
+let currentLyric = -1;
+
+music.addEventListener("timeupdate", () => {
+    const t = music.currentTime;
+
+    let index = -1;
+
+    for (let i = 0; i < lyricsData.length; i++) {
+        if (t >= lyricsData[i].time) index = i;
+    }
+
+    if (index !== currentLyric && index >= 0) {
+        currentLyric = index;
+
+        const lyric = document.getElementById("lyrics");
+        lyric.style.opacity = 0;
+
+        setTimeout(() => {
+            lyric.innerHTML = lyricsData[index].text;
+            lyric.style.opacity = 1;
+        }, 400);
+    }
+});
+
+music.addEventListener("ended", () => {
+    playing = false;
+    document.getElementById("musicButton").innerHTML =
+        "▶ Putar Musik Lagi";
+});
+
+// ENDING
+function showEnding() {
+    document.getElementById("main").classList.add("hidden");
+    document.getElementById("ending").classList.remove("hidden");
+}
+
+function backToGarden() {
+    document.getElementById("ending").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+}
+
+// RESET PLAY BUTTON IF MUSIC PAUSED
+music.addEventListener("pause", () => {
+    if (!music.ended) {
+        playing = false;
+    }
+});
+</script>
+
+</body>
+</html>
